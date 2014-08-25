@@ -751,7 +751,8 @@ User = (function () {
 		} else {
 			this.send('|nametaken|' + name + "|Your authentication token was invalid.");
 		}
-
+		
+		if (Tells.inbox[userid]) Tells.sendTell(userid, this);
 		return false;
 	};
 	User.prototype.finishRename = function (success, tokenData, token, auth, challenge) {
